@@ -1,63 +1,250 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>BMO Arcade</title>
-    <link href="css/juego.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
-</head>
-<body>
-    <div class="col-40">
-        <div id="titulo">
-            <p>ROMPE-COQUILLOS</p>
-        </div>
-        <div id="instrucciones">
-            <div id="lista-instrucciones" style="margin-left">
-                <p>Instrucciones:</p>
-            </div>
-        </div>
-        <div id="objetivo">
-            <div class="texto-centrado">
-                <p>Objetivo</p><img src="images/final.png" width="200px">
-            </div>
-        </div>
-        <div id="ultimo-mov">
-            <div class="texto-centrado" id="flecha"></div>
-        </div>
+ <div id="tablero">
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <br>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <br>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <br>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <div class="carta" data-num=""></div>
+      <br>
+      <div id="score">
+        <div id="tiempo">00: 00: 00</div>
+        <div id="puntos">Score: 0</div>
+      </div>
     </div>
-    <div class="col-60">
-        <div id="juego">
-            <div class="piezas" id="pieza1">
-                <img alt="Parte 1" src="https://www.estrategiaynegocios.net/binrepository/1350x900/75c0/1200d900/none/26086/GXIW/POLLOCAMPERO-GUATEMALA1_EN839948_MG233393853.jpg"> 
-            </div> width="10" height="10" />
-            <div class="piezas" id="pieza2">
-                <img alt="Parte 2" src="images/20.jpg">
-            </div>
-            <div class="piezas" id="pieza3">
-                <img alt="Parte 3" src="images/30.jpg">
-            </div>
-            <div class="piezas" id="pieza4">
-                <img alt="Parte 4" src="images/40.jpg">
-            </div>
-            <div class="piezas" id="pieza5">
-                <img alt="Parte 5" src="images/50.jpg">
-            </div>
-            <div class="piezas" id="pieza6">
-                <img alt="Parte 6" src="images/60.jpg">
-            </div>
-            <div class="piezas" id="pieza7">
-                <img alt="Parte 7" src="images/70.jpg">
-            </div>
-            <div class="piezas" id="pieza8">
-                <img alt="Parte 8" src="images/80.jpg">
-            </div>
-            <div class="piezas" id="pieza9"></div>
-        </div>
-    </div>
-    <div id="footer">
-        <p>Proyecto de mpulp</p>
-    </div>
-    <script src="js/juego.js">
-    </script>
-</body>
-</html>
+ body, #tablero {
+    background-color: #002835;
+    color: #F2ECCE !important;
+    text-shadow: 5px 5px black;
+    }
+
+    #tablero{
+      display: flex;
+      width: 75vw;
+      max-width: 650px;
+      margin: 10px auto;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Anton', sans-serif;
+    }
+      .carta{
+        border-radius: 1em;
+        box-shadow: 3px 3px #860100;
+        background-color: #B50706;
+        cursor: pointer;
+        display: inline-block;
+        height: 11vw;
+        width: 11vw;
+        max-width: 110px;
+        max-height: 110px;
+        margin: 1vw;
+        overflow: hidden;
+        vertical-align: top;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .desaparece{
+        background-color: transparent;
+        color: transparent;
+        display: inline-block;
+        height: 11vw;
+        width: 11vw;
+        max-width: 110px;
+        max-height: 110px;
+        margin: 1vw;
+      }
+
+      .desaparece>p{
+      display:none !important;
+      }
+
+      #score{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+      #tiempo{
+        float: left;
+        font-size: 30px;
+
+      }
+      #puntos{
+        float: right;
+        font-size: 30px;
+      }
+      .carta p{
+        font-weight: bold;
+        font-size: -webkit-xxx-large;
+        z-index: 1;
+        text-align: center;
+        display: none;
+        margin: 0;
+        text-transform: uppercase;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      .Mexico{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRycj-gtXCvQ6r5MTYiJdQ8y-5-11J4PZVkQ&usqp=CAU');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Colombia{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://mir-s3-cdn-cf.behance.net/project_modules/hd/79235314877581.5628a19884cd1.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Venezuela{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ6BcUWf1utHF_q9VnUUcyyTzdv8BvwL-uzMbsCsBL-JfZQQh1JMUfqNu6EZvRegSo0po&usqp=CAU');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Bolivia{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://pc-gt-cdn.s3.amazonaws.com/menu-images/prod-a/ccc019ad-0b12-4606-9db7-4c494f9450a5.png');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Guatemala{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://walmartgt.vtexassets.com/arquivos/ids/259578/Snack-Lays-Campero-Bd-100gr-1-45793.jpg?v=637844566501400000');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Argentina{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://comprabien.net/wp-content/uploads/27020.png');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Chile{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOVcPODSAW9flKpiUu5gdLkmzmtZubYSlIEw&usqp=CAU');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Uruguay{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://noticiasibo.files.wordpress.com/2021/07/camperitos-e1627483121523.jpg?w=640');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Peru{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://juanjosegutierrezmayorga.com/wp-content/uploads/2022/08/Pollo-Campero-1.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .Ecuador{
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15)), url('https://walmartgt.vtexassets.com/arquivos/ids/359944-800-450?v=638182391924130000&width=800&height=450&aspect=true');
+        background-size: cover;
+        background-position: center;
+      }
+ var numCartas = 10;
+      var carta1 = " ";
+      var carta2 = " ";
+      var score = 0;
+      var puntos = 0;
+      $(document).ready(inicio);
+      function inicio(){
+        cargaCartas();
+        $('.carta').on("click", voltear)
+      }
+      function voltear(){
+        //Despliega numeros_array
+        $(this).children().css("display", "flex");
+        //Primera carta
+        if(carta1==" "){
+          carta1 = $(this);
+          $(this).off();
+        }else {
+          carta2 = $(this);
+          $('.carta').off();
+          setTimeout(verificar, 500);
+        }
+      }
+      function verificar(){
+        if (carta1.attr("data-num") == carta2.attr("data-num")) {
+          carta1.removeClass("carta").addClass("desaparece");
+          carta2.removeClass("carta").addClass("desaparece");
+          carta1 = carta2 = " ";
+          //Aumentamos el score
+          score = score + 2;
+          $("#puntos").html("Score: "+score);
+          //Determinar cuando el juego termino
+          puntos++;
+          if (puntos==numCartas) {
+            alert("Congrats!")
+          }
+        }else {
+          carta1.children().css("display", "none");
+          carta2.children().css("display", "none");
+          //Disminuimos score
+          score--;
+          $("#puntos").html("Score: "+score);
+        }
+        carta1 = carta2 = " ";
+        $(".carta").on("click", voltear);
+      }
+      function cargaCartas(){
+        //Declaramos el arreglo vacio
+        var paises_array = new Array();
+	      var num = 0;
+	      var  nombres_paises_array = ['Mexico','Colombia','Venezuela','Bolivia','Guatemala','Argentina','Chile','Uruguay','Peru','Ecuador'];
+        //Generamos arreglo
+        for(var i=1; i<=numCartas; i++){
+          paises_array.push(nombres_paises_array[i-1],nombres_paises_array[i-1]);
+        }
+        $('.carta').each( function(i){
+          num = paises_array.length;
+          n = Math.floor(Math.random()*(num-1));
+          $(this).html("<p>"+paises_array[n].substring(0,2)+"</p>");
+          $(this).attr("data-num", paises_array[n]);
+          $(this).find('p').addClass(paises_array[n]);
+          paises_array.splice(n,1);
+        });
+        tiempo(5);
+      }
+      function tiempo(limite){
+        var min = limite - 1;
+        var seg = 59;
+        t = setInterval(function(){
+          $("#tiempo").html("");
+          if (seg<10) {
+            $("#tiempo").append("00: 0"+min+": 0"+seg);
+          }else {
+            $("#tiempo").append("00: 0"+min+": "+seg);
+          }
+          seg--;
+          if (seg<0) {
+            seg=59;
+            min--;
+          }
+          if (min<0) {
+            clearInterval(t);
+            alert("Muy lento!...");
+            $(".carta").off();
+          }
+        },1000);
+      }
